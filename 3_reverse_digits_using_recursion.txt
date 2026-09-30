@@ -1,0 +1,35 @@
+Problem 3: Reverse the Digits of a Positive Integer
+
+Write a C program that uses recursion to reverse the digits of a positive integer.
+
+Approach:
+Use recursion to process the digits from right to left. Build the reversed number by multiplying the current result by 10 and adding the last digit.
+
+Time Complexity: O(n), where n is the number of digits
+Space Complexity: O(n) due to recursion
+
+C Program:
+
+#include <stdio.h>
+
+int reverseNumber(int n, int reversed)
+{
+    if (n == 0)
+        return reversed;
+
+    return reverseNumber(n / 10, reversed * 10 + n % 10);
+}
+
+int main()
+{
+    int n, reversed;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    reversed = reverseNumber(n, 0);
+
+    printf("Reversed number: %d\n", reversed);
+
+    return 0;
+}
