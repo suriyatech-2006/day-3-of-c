@@ -1,0 +1,39 @@
+Problem 2: Count How Many Times a Digit Occurs
+
+Write a C program that uses recursion to count how many times a given digit occurs in a positive integer.
+
+Approach:
+Use recursion to process the last digit of the number. Compare it with the given digit, then remove the last digit and continue recursively.
+
+Time Complexity: O(n), where n is the number of digits
+Space Complexity: O(n) due to recursion
+
+C Program:
+
+#include <stdio.h>
+
+int countDigit(int n, int digit)
+{
+    if (n == 0)
+        return 0;
+
+    return (n % 10 == digit) + countDigit(n / 10, digit);
+}
+
+int main()
+{
+    int n, digit;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    printf("Enter the digit to count: ");
+    scanf("%d", &digit);
+
+    if (n == 0)
+        printf("The digit occurs %d time(s).\n", digit == 0);
+    else
+        printf("The digit %d occurs %d time(s).\n", digit, countDigit(n, digit));
+
+    return 0;
+}
